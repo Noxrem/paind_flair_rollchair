@@ -1,0 +1,5 @@
+McuLib/src/McuESP32.o McuLib/src/McuESP32.d: ../McuLib/src/McuESP32.c \
+ C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
+ ../McuLib/config/McuESP32config.h
+C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
+../McuLib/config/McuESP32config.h:

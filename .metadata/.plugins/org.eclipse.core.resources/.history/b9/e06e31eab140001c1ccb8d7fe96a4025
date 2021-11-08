@@ -1,0 +1,22 @@
+/*
+ * delay.c
+ *
+ *  Created on: 30.09.2021
+ *      Author: Noxrem
+ */
+#include <stdint.h>
+#include "delay.h"
+
+/*
+ * @brief	Delay function that waits certain amount of milliseconds
+ */
+void delay(uint32_t milliseconds)
+{
+	for(; milliseconds > 0; milliseconds--)	// wait for the desired amount of milliseconds
+	{
+		for(int i = 2095; i > 0; i--)	// wait one millisecond
+		{
+			__asm volatile ("nop");	// do nothing for the duration of one clock ( ns / 20971520Hz)
+		}
+	}
+}

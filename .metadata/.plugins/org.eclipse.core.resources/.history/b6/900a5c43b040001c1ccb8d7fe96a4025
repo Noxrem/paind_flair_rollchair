@@ -1,0 +1,5 @@
+source/delay.o source/delay.d: ../source/delay.c \
+ C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
+ ../source/delay.h
+C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
+../source/delay.h:

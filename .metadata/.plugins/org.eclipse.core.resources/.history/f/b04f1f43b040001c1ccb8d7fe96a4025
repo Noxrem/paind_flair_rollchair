@@ -1,0 +1,35 @@
+McuLib/src/Output1.o McuLib/src/Output1.d: ../McuLib/src/Output1.c \
+ C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
+ ../McuLib/src/Output1.h ../McuLib/src/McuLib.h \
+ ../McuLib/config/McuLibconfig.h ../McuLib/config/Output1config.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\board/pin_mux.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/fsl_device_registers.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/core_cm4.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_version.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_compiler.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_gcc.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/system_MK22F51212.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212_features.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common_arm.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h
+C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
+../McuLib/src/Output1.h:
+../McuLib/src/McuLib.h:
+../McuLib/config/McuLibconfig.h:
+../McuLib/config/Output1config.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\board/pin_mux.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/fsl_device_registers.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/core_cm4.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_version.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_compiler.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_gcc.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/system_MK22F51212.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212_features.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common_arm.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h:

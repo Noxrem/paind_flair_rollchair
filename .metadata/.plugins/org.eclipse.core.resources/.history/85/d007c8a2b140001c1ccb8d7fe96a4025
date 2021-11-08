@@ -1,0 +1,30 @@
+/*
+ * heap_test.c
+ *
+ *  Created on: 01.11.2021
+ *      Author: Noxrem
+ */
+
+#include "heap_test.h"
+#include "McuRTOS.h"
+
+void Heap_Test_Init(void)
+{
+	McuRTOS_Init();
+	void *heapStorage;
+	heapStorage = pvPortMalloc(200);	// Reserve 200 bytes on the heap
+	if(heapStorage == NULL)
+	{
+		/*error*/
+		while(1){}
+	}
+}
+
+void Heap_Test_Malloc_Fail(void)
+{
+	void *heapStorage;
+	for(int i = 0; i<100; i++)	// reserve too much heap that an MallocFailedHook() is triggered
+	{
+		heapStorage = pvPortMalloc(600);
+	}
+}

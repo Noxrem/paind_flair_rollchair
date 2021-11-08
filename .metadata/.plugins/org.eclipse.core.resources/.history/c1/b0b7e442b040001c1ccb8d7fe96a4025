@@ -1,0 +1,8 @@
+../McuLib/src/McuButton.c:36:6:McuBtn_GetDefaultConfig	16	static
+../McuLib/src/McuButton.c:41:6:McuBtn_DisablePullResistor	24	static
+../McuLib/src/McuButton.c:48:6:McuBtn_EnablePullResistor	24	static
+../McuLib/src/McuButton.c:59:6:McuBtn_IsOn	24	static
+../McuLib/src/McuButton.c:71:17:McuBtn_InitButton	40	static
+../McuLib/src/McuButton.c:94:17:McuBtn_DeinitButton	16	static
+../McuLib/src/McuButton.c:104:6:McuBtn_Deinit	4	static
+../McuLib/src/McuButton.c:107:6:McuBtn_Init	4	static

@@ -1,0 +1,4 @@
+startup/startup_mk22f51212.o startup/startup_mk22f51212.d: \
+ ../startup/startup_mk22f51212.c \
+ C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h
+C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:

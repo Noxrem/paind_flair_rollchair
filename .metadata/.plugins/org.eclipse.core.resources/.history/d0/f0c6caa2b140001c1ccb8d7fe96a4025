@@ -1,0 +1,14 @@
+/*
+ * heap_test.h
+ *
+ *  Created on: 01.11.2021
+ *      Author: Noxrem
+ */
+
+#ifndef HEAP_TEST_H_
+#define HEAP_TEST_H_
+
+void Heap_Test_Init(void);
+void Heap_Test_Malloc_Fail(void);
+
+#endif /* HEAP_TEST_H_ */

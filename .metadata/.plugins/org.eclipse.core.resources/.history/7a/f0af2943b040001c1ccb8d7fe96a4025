@@ -1,0 +1,4 @@
+C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h:842:20:CLOCK_SetSimSafeDivs	4	static
+../board/clock_config.c:71:13:CLOCK_CONFIG_FllStableDelay	16	static
+../board/clock_config.c:83:6:BOARD_InitBootClocks	8	static
+../board/clock_config.c:149:6:BOARD_BootClockRUN	8	static

@@ -1,0 +1,89 @@
+McuLib/src/McuLED.o McuLib/src/McuLED.d: ../McuLib/src/McuLED.c \
+ C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
+ ../McuLib/config/McuLibconfig.h ../McuLib/config/McuLEDconfig.h \
+ ../McuLib/config/McuLibconfig.h ../McuLib/src/McuLED.h \
+ ../McuLib/src/McuGPIO.h ../McuLib/src/McuLib.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/fsl_device_registers.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/core_cm4.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_version.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_compiler.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_gcc.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/system_MK22F51212.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212_features.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common_arm.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h \
+ ../McuLib/config/McuGPIOconfig.h \
+ C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_port.h \
+ ../McuLib/src/McuRTOS.h ../McuLib/config/FreeRTOSConfig.h \
+ ../McuLib/src/McuLib.h ../McuLib/config/McuRTOSconfig.h \
+ ../McuLib/config/McuRTOSconfig.h ../McuLib/src/McuShell.h \
+ ../McuLib/config/McuShellconfig.h \
+ ../McuLib/FreeRTOS/Source/include/FreeRTOS.h \
+ ../McuLib/FreeRTOS/Source/include/projdefs.h \
+ ../McuLib/FreeRTOS/Source/include/portable.h \
+ ../McuLib/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../McuLib/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../McuLib/FreeRTOS/Source/include/projdefs.h \
+ ../McuLib/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../McuLib/SEGGER_Sysview/SEGGER_SYSVIEW_FreeRTOS.h \
+ ../McuLib/SEGGER_Sysview/SEGGER_SYSVIEW.h \
+ ../McuLib/config/McuSystemViewconfig.h \
+ ../McuLib/FreeRTOS/Source/include/task.h \
+ ../McuLib/FreeRTOS/Source/include/list.h \
+ ../McuLib/FreeRTOS/Source/include/semphr.h \
+ ../McuLib/FreeRTOS/Source/include/queue.h \
+ ../McuLib/FreeRTOS/Source/include/task.h \
+ ../McuLib/FreeRTOS/Source/include/event_groups.h \
+ ../McuLib/FreeRTOS/Source/include/timers.h \
+ ../McuLib/FreeRTOS/Source/include/timers.h \
+ ../McuLib/FreeRTOS/Source/include/stream_buffer.h
+C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
+../McuLib/config/McuLibconfig.h:
+../McuLib/config/McuLEDconfig.h:
+../McuLib/config/McuLibconfig.h:
+../McuLib/src/McuLED.h:
+../McuLib/src/McuGPIO.h:
+../McuLib/src/McuLib.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/fsl_device_registers.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/core_cm4.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_version.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_compiler.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/cmsis_gcc.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/system_MK22F51212.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\device/MK22F51212_features.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_common_arm.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h:
+../McuLib/config/McuGPIOconfig.h:
+C\:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_port.h:
+../McuLib/src/McuRTOS.h:
+../McuLib/config/FreeRTOSConfig.h:
+../McuLib/src/McuLib.h:
+../McuLib/config/McuRTOSconfig.h:
+../McuLib/config/McuRTOSconfig.h:
+../McuLib/src/McuShell.h:
+../McuLib/config/McuShellconfig.h:
+../McuLib/FreeRTOS/Source/include/FreeRTOS.h:
+../McuLib/FreeRTOS/Source/include/projdefs.h:
+../McuLib/FreeRTOS/Source/include/portable.h:
+../McuLib/FreeRTOS/Source/include/deprecated_definitions.h:
+../McuLib/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+../McuLib/FreeRTOS/Source/include/projdefs.h:
+../McuLib/FreeRTOS/Source/include/mpu_wrappers.h:
+../McuLib/SEGGER_Sysview/SEGGER_SYSVIEW_FreeRTOS.h:
+../McuLib/SEGGER_Sysview/SEGGER_SYSVIEW.h:
+../McuLib/config/McuSystemViewconfig.h:
+../McuLib/FreeRTOS/Source/include/task.h:
+../McuLib/FreeRTOS/Source/include/list.h:
+../McuLib/FreeRTOS/Source/include/semphr.h:
+../McuLib/FreeRTOS/Source/include/queue.h:
+../McuLib/FreeRTOS/Source/include/task.h:
+../McuLib/FreeRTOS/Source/include/event_groups.h:
+../McuLib/FreeRTOS/Source/include/timers.h:
+../McuLib/FreeRTOS/Source/include/timers.h:
+../McuLib/FreeRTOS/Source/include/stream_buffer.h:

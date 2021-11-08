@@ -1,0 +1,5 @@
+C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h:191:20:GPIO_PortSet	16	static
+C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_gpio.h:206:20:GPIO_PortClear	16	static
+../source/blinky_wait.c:17:6:Blinky_Wait_Init	8	static
+../source/blinky_wait.c:23:6:Blinky_Wait_Deinit	8	static
+../source/blinky_wait.c:28:6:Blinky_Wait_Run	8	static

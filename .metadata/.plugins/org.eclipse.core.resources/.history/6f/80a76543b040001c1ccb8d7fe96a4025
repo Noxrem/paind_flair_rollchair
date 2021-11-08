@@ -1,0 +1,5 @@
+../source/myTasks.c:19:13:myTask	24	static
+../source/myTasks.c:37:13:MainTask	24	static
+../source/myTasks.c:51:13:myTaskDick	16	static
+../source/myTasks.c:60:13:myTaskDoof	16	static
+../source/myTasks.c:69:6:MyTasks_Init	24	static

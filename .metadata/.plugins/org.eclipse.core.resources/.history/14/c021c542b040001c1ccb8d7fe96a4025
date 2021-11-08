@@ -1,0 +1,30 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_disp.c \
+../McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_indev.c \
+../McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_tick.c 
+
+OBJS += \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_disp.o \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_indev.o \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_tick.o 
+
+C_DEPS += \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_disp.d \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_indev.d \
+./McuLib/LittlevGL/lvgl/src/lv_hal/lv_hal_tick.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+McuLib/LittlevGL/lvgl/src/lv_hal/%.o: ../McuLib/LittlevGL/lvgl/src/lv_hal/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: MCU C Compiler'
+	arm-none-eabi-gcc -D__REDLIB__ -DCPU_MK22FN512VDC12 -DCPU_MK22FN512VDC12_cm4 -DSDK_OS_BAREMETAL -DSERIAL_PORT_TYPE_UART=1 -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\drivers" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\serial_manager" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\utilities" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\uart" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\lists" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\device" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\CMSIS" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\board" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\source" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\drivers" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\serial_manager" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\utilities" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\uart" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\component\lists" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\CMSIS" -I"C:\Users\Noxrem\Documents\MCUXpressoIDE_11.4.1_6260\workspace\AEMBS_tinyK22_McuLib\device" -I../McuLib -I../McuLib/config -I../McuLib/config/fonts -I../McuLib/fonts -I../McuLib/src -I../McuLib/FreeRTOS/Source/include -I../McuLib/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../McuLib/SEGGER_RTT -I../McuLib/SEGGER_Sysview -I../McuLib/TraceRecorder -I../McuLib/TraceRecorder/config -I../McuLib/TraceRecorder/include -I../McuLib/TraceRecorder/streamports/Jlink_RTT/include -I../McuLib/HD44780 -I../McuLib/FatFS -I../McuLib/FatFS/source -include"C:/Users/Noxrem/Documents/MCUXpressoIDE_11.4.1_6260/workspace/AEMBS_tinyK22_McuLib/source/IncludeMcuLibConfig.h}" -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fmerge-constants -fmacro-prefix-map="../$(@D)/"=. -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

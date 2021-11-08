@@ -1,0 +1,13 @@
+/*
+ * delay.h
+ *
+ *  Created on: 30.09.2021
+ *      Author: Noxrem
+ */
+
+#ifndef DELAY_H_
+#define DELAY_H_
+
+void delay(uint32_t milliseconds);
+
+#endif /* DELAY_H_ */

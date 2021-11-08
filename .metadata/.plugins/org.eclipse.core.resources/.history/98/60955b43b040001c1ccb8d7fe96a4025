@@ -1,0 +1,6 @@
+C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\CMSIS/core_cm4.h:1976:26:SCB_GetFPUType	16	static
+../source/cycle_counter.c:23:6:CCounter_LogTime	72	static
+../source/cycle_counter.c:35:13:CCounter_Test_NOP	8	static
+../source/cycle_counter.c:45:6:CCounter_Test	16	static
+../source/cycle_counter.c:64:6:CCounter_DeInit	4	static
+../source/cycle_counter.c:93:6:CCounter_Init	4	static

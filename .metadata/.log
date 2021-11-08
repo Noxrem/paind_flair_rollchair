@@ -1,0 +1,160 @@
+!SESSION 2021-11-08 17:07:11.035 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2021-11-08 17:09:33.350
+!MESSAGE Recreating part support. No part support available.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2021-11-08 17:09:40.790
+!MESSAGE The device 'LPC845' (version='1.0.0') from SDK 'SDK_2.x_LPC845BREAKOUT' (version='2.10.0', build='494 2021-07-15') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2021-11-08 17:09:43.280
+!MESSAGE The device 'MK22FN512xxx12' (version='1.0.0') from SDK 'SDK_2.x_FRDM-K22F' (version='2.10.0', build='494 2021-07-15') will be installed.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 2 0 2021-11-08 17:09:43.965
+!MESSAGE The device 'MK22FN512xxx12' (version='1.0.0') from SDK 'SDK_2.x_MK22FN512xxx12' (version='2.8.2', build='376 2020-08-19') has not been imported because a newer/existing device has been already installed.
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-11-08 17:09:45.770
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Noxrem'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-11-08 17:22:05.255
+!MESSAGE Indexed 'PAIND_tinyK22_flair' (117 sources, 270 headers) in 11.3 sec: 17’061 declarations; 62’810 references; 6 unresolved inclusions; 26 syntax errors; 28 unresolved names (0.035%)
+
+!ENTRY com.crt.utils 1 0 2021-11-08 17:45:04.955
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.031
+!MESSAGE Genric ROM base address found in xml file: e00ff000
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.236
+!MESSAGE Successfully identified 0x9 class component  Address e000e000 CID1 = 224 PID0 = 12 PID1 = 176 PID2 = 11 PID3 = 0 Revision = 0
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.250
+!MESSAGE Successfully identified 0x9 class component  Address e0001000 CID1 = 224 PID0 = 2 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.251
+!MESSAGE Successfully identified 0x9 class component  Address e0002000 CID1 = 224 PID0 = 3 PID1 = 176 PID2 = 43 PID3 = 0 Revision = 2
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.251
+!MESSAGE Successfully identified 0x9 class component  Address e0000000 CID1 = 224 PID0 = 1 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:45:05.274
+!MESSAGE Successfully identified 0x9 class component  Address e0040000 CID1 = 144 PID0 = 161 PID1 = 185 PID2 = 11 PID3 = 0 DEVARCH = 0 Revision = 0
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2021-11-08 17:45:05.919
+!MESSAGE Telnet session connected on port 2333->51788 @ 127.0.0.1
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:58:46.592
+!MESSAGE Trying to connect to redlink server on port 3025.
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 1 0 2021-11-08 17:58:46.598
+!MESSAGE RedlinkServer telnet session connected on port 3025->64127 @ 127.0.0.1
+
+!ENTRY com.nxp.mcuxpresso.core.debug.support.linkserver 4 0 2021-11-08 17:58:52.430
+!MESSAGE Unable to parse ProbeList output to get probe ref count: []
+
+!ENTRY com.crt.utils 1 0 2021-11-08 17:59:39.950
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:39.985
+!MESSAGE Genric ROM base address found in xml file: e00ff000
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:40.144
+!MESSAGE Successfully identified 0x9 class component  Address e000e000 CID1 = 224 PID0 = 12 PID1 = 176 PID2 = 11 PID3 = 0 Revision = 0
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:40.157
+!MESSAGE Successfully identified 0x9 class component  Address e0001000 CID1 = 224 PID0 = 2 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:40.169
+!MESSAGE Successfully identified 0x9 class component  Address e0002000 CID1 = 224 PID0 = 3 PID1 = 176 PID2 = 43 PID3 = 0 Revision = 2
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:40.180
+!MESSAGE Successfully identified 0x9 class component  Address e0000000 CID1 = 224 PID0 = 1 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 17:59:40.192
+!MESSAGE Successfully identified 0x9 class component  Address e0040000 CID1 = 144 PID0 = 161 PID1 = 185 PID2 = 11 PID3 = 0 DEVARCH = 0 Revision = 0
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2021-11-08 17:59:40.940
+!MESSAGE Telnet session connected on port 2333->64165 @ 127.0.0.1
+
+!ENTRY com.crt.utils 1 0 2021-11-08 18:05:49.015
+!MESSAGE Connected to 127.0.0.1 on port 2332.
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.039
+!MESSAGE Genric ROM base address found in xml file: e00ff000
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.100
+!MESSAGE Successfully identified 0x9 class component  Address e000e000 CID1 = 224 PID0 = 12 PID1 = 176 PID2 = 11 PID3 = 0 Revision = 0
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.128
+!MESSAGE Successfully identified 0x9 class component  Address e0001000 CID1 = 224 PID0 = 2 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.146
+!MESSAGE Successfully identified 0x9 class component  Address e0002000 CID1 = 224 PID0 = 3 PID1 = 176 PID2 = 43 PID3 = 0 Revision = 2
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.153
+!MESSAGE Successfully identified 0x9 class component  Address e0000000 CID1 = 224 PID0 = 1 PID1 = 176 PID2 = 59 PID3 = 0 Revision = 3
+
+!ENTRY com.crt.log 1 0 2021-11-08 18:05:49.171
+!MESSAGE Successfully identified 0x9 class component  Address e0040000 CID1 = 144 PID0 = 161 PID1 = 185 PID2 = 11 PID3 = 0 DEVARCH = 0 Revision = 0
+
+!ENTRY com.nxp.mcuxpresso.core.debug 1 0 2021-11-08 18:05:50.005
+!MESSAGE Telnet session connected on port 2333->54108 @ 127.0.0.1
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:05:58.452
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:06:02.702
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:06:20.564
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-11-08 18:06:21.239
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@25606684): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression "&(McuSystemView_Print((const char *)\"Printing a message\\r\\n\"))"
+Error message from debugger back end:
+Attempt to take address of value not located in memory. java.lang.Exception: Attempt to take address of value not located in memory.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2021-11-08 18:06:21.239
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression "&(McuSystemView_Print((const char *)\"Printing a message\\r\\n\"))"
+Error message from debugger back end:
+Attempt to take address of value not located in memory.
+!STACK 0
+java.lang.Exception: Attempt to take address of value not located in memory.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1014)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:843)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-11-08 18:06:21.382
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIMemory$4@1aac1173): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-data-evaluate-expression "&(McuSystemView_Warn((const char*)\"Warning message\\r\\n\"))"
+Error message from debugger back end:
+Attempt to take address of value not located in memory. java.lang.Exception: Attempt to take address of value not located in memory.' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2021-11-08 18:06:21.382
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression "&(McuSystemView_Warn((const char*)\"Warning message\\r\\n\"))"
+Error message from debugger back end:
+Attempt to take address of value not located in memory.
+!STACK 0
+java.lang.Exception: Attempt to take address of value not located in memory.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1014)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:843)
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:06:33.091
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:06:44.703
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:07:39.835
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10001 2021-11-08 18:08:14.381
+!MESSAGE Target not available.
