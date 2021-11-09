@@ -1,4 +1,0 @@
-C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h:627:20:CLOCK_EnableClock	24	static
-../source/gpio.c:15:6:GPIO_Button_Init	32	static
-../source/gpio.c:52:6:GPIO_Button_Deinit	8	static
-../source/gpio.c:57:6:GPIO_Button_Check	8	static

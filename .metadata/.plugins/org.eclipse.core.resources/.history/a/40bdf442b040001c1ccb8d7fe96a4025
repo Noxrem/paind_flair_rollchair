@@ -1,9 +1,0 @@
-McuLib/src/McuGFont.o McuLib/src/McuGFont.d: ../McuLib/src/McuGFont.c \
- C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
- ../McuLib/src/McuGFont.h ../McuLib/src/McuLib.h \
- ../McuLib/config/McuLibconfig.h ../McuLib/config/McuGFontconfig.h
-C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
-../McuLib/src/McuGFont.h:
-../McuLib/src/McuLib.h:
-../McuLib/config/McuLibconfig.h:
-../McuLib/config/McuGFontconfig.h:

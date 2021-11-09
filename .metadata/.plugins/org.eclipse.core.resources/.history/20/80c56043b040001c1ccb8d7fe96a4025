@@ -1,2 +1,0 @@
-../source/heap_test.c:11:6:Heap_Test_Init	16	static
-../source/heap_test.c:23:6:Heap_Test_Malloc_Fail	16	static

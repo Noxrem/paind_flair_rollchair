@@ -1,6 +1,0 @@
-McuLib/src/McuCRC_Generator.o McuLib/src/McuCRC_Generator.d: \
- ../McuLib/src/McuCRC_Generator.c \
- C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
- ../McuLib/src/McuCRC_Generator.h
-C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
-../McuLib/src/McuCRC_Generator.h:

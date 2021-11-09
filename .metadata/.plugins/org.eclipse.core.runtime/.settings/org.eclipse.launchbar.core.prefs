@@ -1,8 +1,0 @@
-LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
-LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
-LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PAIND_tinyK22_flair JLink Debug (1),org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PAIND_tinyK22_flair JLink Debug
-eclipse.preferences.version=1
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:AEMBS_tinyK22_McuLib\ JLink\ Debug/activeLaunchMode=debug
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:AEMBS_tinyK22_McuLib\ JLink\ Debug/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PAIND_tinyK22_flair\ JLink\ Debug/activeLaunchMode=debug

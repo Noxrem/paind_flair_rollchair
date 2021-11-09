@@ -1,4 +1,0 @@
-C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_clock.h:627:20:CLOCK_EnableClock	24	static
-C:\Users\Noxrem\Documents\GitHub\paind_flair_rollchair\PAIND_tinyK22_flair\drivers/fsl_port.h:374:20:PORT_SetPinMux	24	static
-../board/pin_mux.c:32:6:BOARD_InitBootPins	8	static
-../board/pin_mux.c:55:6:BOARD_InitPins	16	static

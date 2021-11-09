@@ -1,6 +1,0 @@
-../source/LED.c:19:6:LED_Init	32	static
-../source/LED.c:52:6:LED_Deinit	8	static
-../source/LED.c:58:6:LED_On	8	static
-../source/LED.c:63:6:LED_Off	8	static
-../source/LED.c:68:6:LED_Toggle	8	static
-../source/LED.c:74:6:LED_Blinky	8	static

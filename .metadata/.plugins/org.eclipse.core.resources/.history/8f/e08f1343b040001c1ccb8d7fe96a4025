@@ -1,6 +1,0 @@
-McuLib/src/McuShellUart.o McuLib/src/McuShellUart.d: \
- ../McuLib/src/McuShellUart.c \
- C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h \
- ../McuLib/config/McuShellUartconfig.h
-C\:/Users/Noxrem/Documents/GitHub/paind_flair_rollchair/PAIND_tinyK22_flair/source/IncludeMcuLibConfig.h:
-../McuLib/config/McuShellUartconfig.h:
