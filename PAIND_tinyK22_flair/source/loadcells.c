@@ -36,75 +36,12 @@
 #define PWMPERMIL		200
 #define DATASIZE		sizeof(int32_t)
 
-static McuGPIO_Handle_t loadcell1_Data;
-static McuGPIO_Handle_t loadcell1_Clk;
-static McuLED_Handle_t led_Blue;
-static TaskHandle_t loadCell_TaskHandle;
-QueueHandle_t loadCell1_QueueHandle;
-QueueHandle_t printerQueue_Handle;
-
-
-int32_t Control_Hysteresis(int32_t error, int32_t amplitude, int32_t limit){
-	if(error>limit){
-		return -amplitude;
-	}else if(error<(-limit)){
-		return amplitude;
-	}else{
-		return 0;
-	}
-}
-
-int32_t Control_Proportional(int32_t error, int32_t numerator, int32_t denumerator){
-	return -error*numerator/denumerator;
-}
-
-
-//Controller which uses loadcell data.
-static void Controler(void *pv) {
-
-	BaseType_t result;
-	int32_t offset = 0;
-	int32_t oldOffset = 0;
-	int32_t data = 0;
-
-	Utils_SendStringToCharQueue(hostTxQueue, (const unsigned char *)"Start calibration\r\n");
-	for(uint8_t i = 0; i<10;){
-		oldOffset = offset;
-		result = xQueueReceive(loadCell1_QueueHandle, &offset, pdMS_TO_TICKS(1000));
-		if(result == errQUEUE_EMPTY){
-			i = 0;
-			offset = 0;
-			Utils_SendStringToCharQueue(hostTxQueue, (const unsigned char *)"Timeout: Calibration restarted\r\n");
-		}
-		/// \todo Check if old offset and new one are in a plausible range of each other (stable value).
-		if(1){
-			i++;
-		}
-	}
-	uint8_t str[35];
-	str[0] = '\0';
-	McuUtility_strcat(str, 35, (const unsigned char *)"Calibration offset: ");
-	McuUtility_strcatNum32s(str, 35, offset);
-	McuUtility_strcat(str, 35, (const unsigned char *)"\n\r");
-
-	Utils_SendStringToCharQueue(hostTxQueue, (const unsigned char *)str);
-
-	for(;;){
-		result = xQueueReceive(loadCell1_QueueHandle, &data, pdMS_TO_TICKS(200));
-		if(result != pdPASS){
-			motorSetPwmA(0);
-		}else if(result == pdPASS){
-			//motorSetPwmA(Control_Hysteresis((offset-data), 250, 4000));
-			//motorSetPwmA(Control_Proportional((offset-data), 1,50));
-					// Send data to the queue.
-//					char str[20];
-//					sprintf(str, "%d\r\n", (offset-data));
-//
-//					/// todo Check return and do error handling.
-//					Utils_SendStringToCharQueue(hostTxQueue, (const unsigned char *)str);
-		}
-	}
-}
+static McuGPIO_Handle_t loadCell1DataHndl;
+static McuGPIO_Handle_t loadCell1ClkHndl;
+//static McuLED_Handle_t led_Blue;
+static TaskHandle_t loadCellTaskHndl;
+QueueHandle_t loadCell1QueueHndl;
+QueueHandle_t printerQueueHndl;
 
 //Sends loadcell data to hostTxQueue
 static void LoadCellPrinter_Task(void *pv){
@@ -114,12 +51,12 @@ static void LoadCellPrinter_Task(void *pv){
 
 	//empty queue.
 	while(result != errQUEUE_EMPTY){
-		result = xQueueReceive(printerQueue_Handle, &data, 0);
+		result = xQueueReceive(printerQueueHndl, &data, 0);
 	}
 
 
 	for(uint16_t i = 0; i<samples; i++){
-		xQueueReceive(printerQueue_Handle, &data, portMAX_DELAY );
+		xQueueReceive(printerQueueHndl, &data, portMAX_DELAY );
 		char str[20];
 		sprintf(str, "%d\r\n", data);
 		Utils_SendStringToCharQueue(hostTxQueue, (const unsigned char*)str);
@@ -129,14 +66,14 @@ static void LoadCellPrinter_Task(void *pv){
 
 
 void LOADCELL_D_IRQ_HANDELER() {
-	GPIO_PortClearInterruptFlags(LOADCELL1_D_GPIO, 1 << LOADCELL1_D_PIN);
+	GPIO_PortClearInterruptFlags(LOADCELL1_DAT_GPIO, 1 << LOADCELL1_DAT_PIN);
 
 	BaseType_t xHigherPriorityTaskWoken;
 
 	/// \todo make sure data line is stable in low state.
-	if(McuGPIO_IsLow(loadcell1_Data)){
+	if(McuGPIO_IsLow(loadCell1DataHndl)){
 		// Notify load cell task that the data line was pulled low but only if the task is not suspended.
-			xTaskNotifyFromISR(loadCell_TaskHandle, 0, eNoAction, &xHigherPriorityTaskWoken);
+			xTaskNotifyFromISR(loadCellTaskHndl, 0, eNoAction, &xHigherPriorityTaskWoken);
 	}
 
 	// If the load cell task has a better priority than the currently running task then yield.
@@ -178,16 +115,16 @@ static void LoadCell_Task(void *pv) {
 		//For loop to receive data, which takes approximately 24*(hightime + lowtime) = 24*0.4us = 9.6us.
 		for (int8_t i = 23; i >= 0; i--) {
 			//Set clock line high to indicate I am ready to read the current bit.
-			McuGPIO_SetHigh(loadcell1_Clk);
+			McuGPIO_SetHigh(loadCell1ClkHndl);
 
 			//High time is 200ns, so wait that (from data sheet of hx711).
 			McuWait_Waitns(150);
 
 			//Read data and set the corresponding bit of data.
-			data |= McuGPIO_IsHigh(loadcell1_Data) << i;
+			data |= McuGPIO_IsHigh(loadCell1DataHndl) << i;
 
 			//Set clock line low to be able to set it high afterwards.
-			McuGPIO_SetLow(loadcell1_Clk);
+			McuGPIO_SetLow(loadCell1ClkHndl);
 
 			//Low time is 200ns, so wait that (from data sheet of hx711).
 			McuWait_Waitns(LOWTIME_NS);
@@ -201,17 +138,17 @@ static void LoadCell_Task(void *pv) {
 		//1 pulse: Channel A and gain 128
 		//2 pulses: Channel B and gain 32
 		//3 pulses: Channel A and gain 64
-		McuGPIO_SetHigh(loadcell1_Clk);
+		McuGPIO_SetHigh(loadCell1ClkHndl);
 		McuWait_Waitns(HIGHTIME_NS);
-		McuGPIO_SetLow(loadcell1_Clk);
+		McuGPIO_SetLow(loadCell1ClkHndl);
 		McuWait_Waitns(LOWTIME_NS);
-		McuGPIO_SetHigh(loadcell1_Clk);
+		McuGPIO_SetHigh(loadCell1ClkHndl);
 		McuWait_Waitns(200);
-		McuGPIO_SetLow(loadcell1_Clk);
+		McuGPIO_SetLow(loadCell1ClkHndl);
 		McuWait_Waitns(200);
-		McuGPIO_SetHigh(loadcell1_Clk);
+		McuGPIO_SetHigh(loadCell1ClkHndl);
 		McuWait_Waitns(200);
-		McuGPIO_SetLow(loadcell1_Clk);
+		McuGPIO_SetLow(loadCell1ClkHndl);
 		McuWait_Waitns(200);
 
 //		if(i==100){
@@ -225,14 +162,14 @@ static void LoadCell_Task(void *pv) {
 		/// todo Check return and do error handling.
 
 		//Send data to data queue which is used by the controler.
-		xQueueSend(loadCell1_QueueHandle, &data, portMAX_DELAY);
-		xQueueSend(printerQueue_Handle, &data, 0);
+		xQueueSend(loadCell1QueueHndl, &data, portMAX_DELAY);
+		xQueueSend(printerQueueHndl, &data, 0);
 
 		data = 0;
 
 
 		//Clear interrupt before enabling it again (not sure if isr flag is set while it is disabled).
-		GPIO_PortClearInterruptFlags(LOADCELL1_D_GPIO, 1 << LOADCELL1_D_PIN);
+		GPIO_PortClearInterruptFlags(LOADCELL1_DAT_GPIO, 1 << LOADCELL1_DAT_PIN);
 
 		interruptResult = EnableIRQ(PORTB_IRQn);
 		if(interruptResult != kStatus_Success){
@@ -252,7 +189,7 @@ void LoadCell_Init(void){
 	CLOCK_EnableClock(kCLOCK_PortC);
 
 	McuGPIO_Init();
-	McuLED_Init();
+	//McuLED_Init();
 	McuWait_Init();
 	McuCriticalSection_Init();
 	McuUtility_Init();
@@ -263,95 +200,99 @@ void LoadCell_Init(void){
 
 	// Configure data line of load cell 1;
 	gpio_config.isInput = true;
-	gpio_config.hw.gpio = LOADCELL1_D_GPIO;
-	gpio_config.hw.port = LOADCELL1_D_PORT;
-	gpio_config.hw.pin = LOADCELL1_D_PIN;
-	loadcell1_Data = McuGPIO_InitGPIO(&gpio_config);
+	gpio_config.hw.gpio = LOADCELL1_DAT_GPIO;
+	gpio_config.hw.port = LOADCELL1_DAT_PORT;
+	gpio_config.hw.pin = LOADCELL1_DAT_PIN;
+	loadCell1DataHndl = McuGPIO_InitGPIO(&gpio_config);
 
 	// Configure clock line of load cell 1.
 	gpio_config.isInput = false;
 	gpio_config.hw.gpio = LOADCELL1_CLK_GPIO;
 	gpio_config.hw.port = LOADCELL1_CLK_PORT;
 	gpio_config.hw.pin = LOADCELL1_CLK_PIN;
-	loadcell1_Clk = McuGPIO_InitGPIO(&gpio_config);
+	loadCell1ClkHndl = McuGPIO_InitGPIO(&gpio_config);
 
-	McuLED_Config_t led_config;
+//	McuLED_Config_t led_config;
+//
+//	McuLED_GetDefaultConfig(&led_config);
+//	led_config.isLowActive = true;
+//	led_config.isOnInit = false;
+//	led_config.hw.gpio = BLUE_LED_GPIO;
+//	led_config.hw.port = BLUE_LED_PORT;
+//	led_config.hw.pin = BLUE_LED_PIN;
+//	led_Blue = McuLED_InitLed(&led_config);
 
-	McuLED_GetDefaultConfig(&led_config);
-	led_config.isLowActive = true;
-	led_config.isOnInit = false;
-	led_config.hw.gpio = BLUE_LED_GPIO;
-	led_config.hw.port = BLUE_LED_PORT;
-	led_config.hw.pin = BLUE_LED_PIN;
-	led_Blue = McuLED_InitLed(&led_config);
-
-	if (loadcell1_Clk == NULL || loadcell1_Data == NULL || led_Blue == NULL) {
+	// Check if the handles are valid
+	if (loadCell1ClkHndl == NULL || loadCell1DataHndl == NULL) {
 		/*error handling */
 		for (;;) {
 		}
 	}
 
 	//Set pull-resistor after error handling.
-	McuGPIO_SetPullResistor(loadcell1_Data, McuGPIO_PULL_UP);
+	McuGPIO_SetPullResistor(loadCell1DataHndl, McuGPIO_PULL_UP);
 
 	// Configure interrupt of data line of load cell 1.
-	PORT_SetPinInterruptConfig(LOADCELL1_D_PORT, LOADCELL1_D_PIN, kPORT_InterruptFallingEdge);
+	PORT_SetPinInterruptConfig(LOADCELL1_DAT_PORT, LOADCELL1_DAT_PIN, kPORT_InterruptFallingEdge);
 	/// \bug If i disabled the load cell module and then enable it again, I get a hardfault here.
 	EnableIRQ(PORTB_IRQn);
-	NVIC_SetPriority(PORTB_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY+1);
+	NVIC_SetPriority(PORTB_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY+1);	// Run interrupt with second highest priority
 
 	//Initiate load cell 1 data queue.
-	loadCell1_QueueHandle = xQueueCreate(100, DATASIZE);
-	if(loadCell1_QueueHandle == NULL){
+	loadCell1QueueHndl = xQueueCreate(100, DATASIZE);
+	if(loadCell1QueueHndl == NULL){
 		for(;;){
 			//I'm trapped.
 		}
 	}
-	vQueueAddToRegistry(loadCell1_QueueHandle, (const char*)"Loadcell1Queue");
+	// Make queue trackable in the debugger
+	vQueueAddToRegistry(loadCell1QueueHndl, (const char*)"loadCell1Queue");
 
 
-	printerQueue_Handle = xQueueCreate(500, DATASIZE);
-	if(printerQueue_Handle == NULL){
+	printerQueueHndl = xQueueCreate(500, DATASIZE);
+	if(printerQueueHndl == NULL){
 		for(;;){
 			//I'm trapped.
 		}
 	}
-	vQueueAddToRegistry(printerQueue_Handle, (const char*)"printerQueue");
+	vQueueAddToRegistry(printerQueueHndl, (const char*)"printerQueue");
 
-	// Initiate load cell task.
+	// Initialize load cell task.
 	BaseType_t result;
-	result = xTaskCreate(LoadCell_Task, "LoadCell_Task", 500/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, &loadCell_TaskHandle);
+	result = xTaskCreate(LoadCell_Task, "LoadCell_Task", 500/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, &loadCellTaskHndl);
 	if(result!=pdPASS){
 		for(;;){
 			//I'm trapped.
 		}
 	}
-	vTaskSuspend(loadCell_TaskHandle);
 
-
-	result = xTaskCreate(Controler, "Controler", 500/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, NULL);
-	if(result!=pdPASS){
-		for(;;){
-			//I'm trapped.
-		}
-	}
+	// Suspend task from running
+	vTaskSuspend(loadCellTaskHndl);
 }
 
 
 void LoadCell_Deinit(void){
-	vTaskDelete(loadCell_TaskHandle);
+	vTaskDelete(loadCellTaskHndl);
+	vQueueUnregisterQueue(printerQueueHndl);
+	vQueueDelete(printerQueueHndl);
+	vQueueUnregisterQueue(loadCell1QueueHndl);
+	vQueueDelete(loadCell1QueueHndl);
 
 	/// \remark Hmm, should I disable the IRQ but what if another module uses the same IRQ?
 	DisableIRQ(PORTB_IRQn);
 
-	McuGPIO_SetPullResistor(loadcell1_Data, McuGPIO_PULL_DISABLE);
+	McuGPIO_SetPullResistor(loadCell1DataHndl, McuGPIO_PULL_DISABLE);
 
-	McuGPIO_DeinitGPIO(loadcell1_Data);
-	McuGPIO_DeinitGPIO(loadcell1_Clk);
-//	McuGPIO_Deinit();
-//	McuUtility_Deinit();
+	McuGPIO_DeinitGPIO(loadCell1ClkHndl);
+	McuGPIO_DeinitGPIO(loadCell1DataHndl);
 
-	McuLED_DeinitLed(led_Blue);
+	// \remark Should these libraries be deinitialized even when they are used in other modules?
+	McuUtility_Deinit();
+	McuCriticalSection_Deinit();
+	McuWait_Deinit();
+	McuGPIO_Deinit();
+
+//	McuLED_DeinitLed(led_Blue);
 //	McuLED_Deinit();
 
 	/// \remark Hmm, should I disable the clocks to the ports but what if another module uses the same ports?
@@ -359,11 +300,11 @@ void LoadCell_Deinit(void){
 }
 
 void LoadCell_Stop(void){
-	vTaskSuspend(loadCell_TaskHandle);
+	vTaskSuspend(loadCellTaskHndl);
 }
 
 void LoadCell_Start(void){
-	vTaskResume(loadCell_TaskHandle);
+	vTaskResume(loadCellTaskHndl);
 }
 
 void LoadCell_PrintLoad(uint16_t samples){

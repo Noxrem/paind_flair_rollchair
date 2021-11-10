@@ -18,9 +18,9 @@
 #ifndef LOADCELLS_H_
 #define LOADCELLS_H_
 
-#define LOADCELL1_D_GPIO			GPIOB
-#define LOADCELL1_D_PORT			PORTB
-#define LOADCELL1_D_PIN				17
+#define LOADCELL1_DAT_GPIO			GPIOB
+#define LOADCELL1_DAT_PORT			PORTB
+#define LOADCELL1_DAT_PIN			17
 
 #define LOADCELL_D_IRQ_HANDELER	PORTB_IRQHandler
 
@@ -29,18 +29,13 @@
 #define LOADCELL1_CLK_PORT			PORTC
 #define LOADCELL1_CLK_PIN			8
 
-#define BLUE_LED_GPIO				GPIOC
-#define BLUE_LED_PORT				PORTC
-#define BLUE_LED_PIN				2
-
-extern QueueHandle_t loadCell1_QueueHandle;
+extern QueueHandle_t loadCell1QueueHndl;
 
 void LoadCell_Init(void);
 void LoadCell_Deinit(void);
 void LoadCell_Start(void);
 void LoadCell_Stop(void);
 void LoadCell_PrintLoad(uint16_t samples);
-//void LoadCell_UpdateControl(int32_t Limit, int16_t PwmPermil);
 
 
 
