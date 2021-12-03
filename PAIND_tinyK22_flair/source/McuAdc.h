@@ -1,0 +1,25 @@
+/*
+ * McuAdc.h
+ *
+ *  Created on: 03.12.2021
+ *      Author: Noxrem
+ */
+
+#ifndef MCUADC_H_
+#define MCUADC_H_
+
+typedef enum ADC_Channel_e {
+	ADC_TRIG_R,
+	ADC_TRIG_L
+} ADC_Channel_e;
+
+/*!
+ * \brief Initialize a adc channel
+ * \param adcCh Sets the channel from ADC_Channel_e to be set up
+ */
+uint8_t McuAdc_Get_Value(ADC_Channel_e adcCh, uint16_t *val);
+void McuAdc_Channel_Init(ADC_Channnel_e adcCh);
+void McuAdc_Init(void);
+void McuAdc_Deinit(void);
+
+#endif /* MCUADC_H_ */
