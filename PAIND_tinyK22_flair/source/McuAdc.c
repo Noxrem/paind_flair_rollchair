@@ -17,24 +17,24 @@
 /*******************************************************************************
  * Definitions
  */
-/* FSR (force sensing resistor) trigger adc base address */
-#define TRIG_ADC16_BASE			  ADC0
+/* ADC0 base adress */
+#define ADC16_ADC0_BASE			  ADC0
 
-/* FSR (force sensing resistor) trigger right */
-#define TRIGR_ADC16_CHANNEL_GROUP 0U
-#define TRIGR_ADC16_USER_CHANNEL  8U
+/* ADC0 channel 8  at PTB0 */
+#define ADC16_ADC0_8_CHANNEL_GROUP 0U
+#define ADC16_ADC0_8_USER_CHANNEL  8U
 
-/* FSR (force sensing resistor) trigger left */
-#define TRIGL_ADC16_CHANNEL_GROUP 0U
-#define TRIGL_ADC16_USER_CHANNEL  9U
+/* ACD0 channel 9 at PTB1 */
+#define ADC16_ADC0_9_CHANNEL_GROUP 0U
+#define ADC16_ADC0_9_USER_CHANNEL  9U
 
 /*******************************************************************************
  * Variables
  */
 const uint32_t g_Adc16_12bitFullRange = 4096U;
 
-adc16_channel_config_t adc16ChannelConfigStructTrigR;
-adc16_channel_config_t adc16ChannelConfigStructTrigL;
+adc16_channel_config_t adc16ChannelConfigStructCh8;
+adc16_channel_config_t adc16ChannelConfigStructCh9;
 
 /*******************************************************************************
  * Methods
@@ -47,15 +47,15 @@ uint8_t McuAdc_Get_Value(ADC_Channel_e adcCh, uint16_t *val)
 
 	switch(adcCh)
 	{
-		case ADC_TRIG_R:
-			base = TRIG_ADC16_BASE;
-			chGroup = TRIGR_ADC16_CHANNEL_GROUP;
-			config = adc16ChannelConfigStructTrigR;
+		case ADC_ADC0_8:
+			base = ADC16_ADC0_BASE;
+			chGroup = ADC16_ADC0_8_CHANNEL_GROUP;
+			config = adc16ChannelConfigStructCh8;
 			break;
-		case ADC_TRIG_L:
-			base = TRIG_ADC16_BASE;
-			chGroup = TRIGL_ADC16_CHANNEL_GROUP;
-			config = adc16ChannelConfigStructTrigL;
+		case ADC_ADC0_9:
+			base = ADC16_ADC0_BASE;
+			chGroup = ADC16_ADC0_9_CHANNEL_GROUP;
+			config = adc16ChannelConfigStructCh9;
 			break;
 		default:
 			return ERR_FAILED;
@@ -74,18 +74,18 @@ void McuAdc_Channel_Init(ADC_Channel_e adcCh)
 {
 	switch(adcCh)
 	{
-		case ADC_TRIG_R:
-		    adc16ChannelConfigStructTrigR.channelNumber                        = TRIGR_ADC16_USER_CHANNEL;
-		    adc16ChannelConfigStructTrigR.enableInterruptOnConversionCompleted = false;
+		case ADC_ADC0_8:
+		    adc16ChannelConfigStructCh8.channelNumber                        = ADC16_ADC0_8_USER_CHANNEL;
+		    adc16ChannelConfigStructCh8.enableInterruptOnConversionCompleted = false;
 			#if defined(FSL_FEATURE_ADC16_HAS_DIFF_MODE) && FSL_FEATURE_ADC16_HAS_DIFF_MODE
-				adc16ChannelConfigStructTrigR.enableDifferentialConversion = false;
+				adc16ChannelConfigStructCh8.enableDifferentialConversion = false;
 			#endif /* FSL_FEATURE_ADC16_HAS_DIFF_MODE */
 			break;
-		case ADC_TRIG_L:
-		    adc16ChannelConfigStructTrigL.channelNumber                        = TRIGL_ADC16_USER_CHANNEL;
-		    adc16ChannelConfigStructTrigL.enableInterruptOnConversionCompleted = false;
+		case ADC_ADC0_9:
+		    adc16ChannelConfigStructCh9.channelNumber                        = ADC16_ADC0_9_USER_CHANNEL;
+		    adc16ChannelConfigStructCh9.enableInterruptOnConversionCompleted = false;
 			#if defined(FSL_FEATURE_ADC16_HAS_DIFF_MODE) && FSL_FEATURE_ADC16_HAS_DIFF_MODE
-				adc16ChannelConfigStructTrigL.enableDifferentialConversion = false;
+				adc16ChannelConfigStructCh9.enableDifferentialConversion = false;
 			#endif /* FSL_FEATURE_ADC16_HAS_DIFF_MODE */
 			break;
 		default:
@@ -102,10 +102,10 @@ void McuAdc_Init(void)
 	#ifdef BOARD_ADC_USE_ALT_VREF
 		adc16ConfigStruct.referenceVoltageSource = kADC16_ReferenceVoltageSourceValt;
 	#endif
-	ADC16_Init(TRIG_ADC16_BASE, &adc16ConfigStruct);
-	ADC16_EnableHardwareTrigger(TRIG_ADC16_BASE, false);	// Make sure the software trigger is used
+	ADC16_Init(ADC16_ADC0_BASE, &adc16ConfigStruct);
+	ADC16_EnableHardwareTrigger(ADC16_ADC0_BASE, false);	// Make sure the software trigger is used
 	#if defined(FSL_FEATURE_ADC16_HAS_CALIBRATION) && FSL_FEATURE_ADC16_HAS_CALIBRATION
-		if (kStatus_Success == ADC16_DoAutoCalibration(TRIG_ADC16_BASE))
+		if (kStatus_Success == ADC16_DoAutoCalibration(ADC16_ADC0_BASE))
 		{
 			printf("ADC16_DoAutoCalibration() Done.\r\n");
 		}

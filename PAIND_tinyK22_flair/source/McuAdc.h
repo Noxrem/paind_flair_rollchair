@@ -11,8 +11,8 @@
 #include <stdint.h>
 
 typedef enum ADC_Channel_e {
-	ADC_TRIG_R,
-	ADC_TRIG_L
+	ADC_ADC0_8,
+	ADC_ADC0_9
 } ADC_Channel_e;
 
 /*!
