@@ -8,6 +8,8 @@
 #ifndef MCUADC_H_
 #define MCUADC_H_
 
+#include <stdint.h>
+
 typedef enum ADC_Channel_e {
 	ADC_TRIG_R,
 	ADC_TRIG_L
@@ -18,7 +20,7 @@ typedef enum ADC_Channel_e {
  * \param adcCh Sets the channel from ADC_Channel_e to be set up
  */
 uint8_t McuAdc_Get_Value(ADC_Channel_e adcCh, uint16_t *val);
-void McuAdc_Channel_Init(ADC_Channnel_e adcCh);
+void McuAdc_Channel_Init(ADC_Channel_e adcCh);
 void McuAdc_Init(void);
 void McuAdc_Deinit(void);
 
