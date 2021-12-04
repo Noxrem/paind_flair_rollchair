@@ -12,6 +12,7 @@
 #include "McuSystemView.h"
 #include "McuRTOS.h"
 #include "McuAdc.h"
+#include "fsr_sensor.h"
 
 void PL_Init(void)
 {
@@ -22,10 +23,12 @@ void PL_Init(void)
 	#endif
 	McuRTOS_Init();
 	McuAdc_Init();
+	FSR_Sensor_Init();
 }
 
 void PL_Deinit(void)
 {
+	FSR_Sensor_Deinit();
 	McuAdc_Deinit();
 	McuRTOS_Deinit();
 	#if configUSE_SEGGER_SYSTEM_VIEWER_HOOKS

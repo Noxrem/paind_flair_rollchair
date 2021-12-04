@@ -44,6 +44,30 @@ void BOARD_InitBootPins(void);
  */
 void BOARD_InitPins(void);
 
+/*! @name PORTB0 (coord G11), ADC_FSR_R
+  @{ */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_ADCPINS_ADC_FSR_R_PORT PORTB               /*!<@brief PORT peripheral base pointer */
+#define BOARD_ADCPINS_ADC_FSR_R_PIN 0U                   /*!<@brief PORT pin number */
+#define BOARD_ADCPINS_ADC_FSR_R_PIN_MASK (1U << 0U)      /*!<@brief PORT pin mask */
+                                                         /* @} */
+
+/*! @name PORTB1 (coord G10), ADC_FSR_L
+  @{ */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_ADCPINS_ADC_FSR_L_PORT PORTB               /*!<@brief PORT peripheral base pointer */
+#define BOARD_ADCPINS_ADC_FSR_L_PIN 1U                   /*!<@brief PORT pin number */
+#define BOARD_ADCPINS_ADC_FSR_L_PIN_MASK (1U << 1U)      /*!<@brief PORT pin mask */
+                                                         /* @} */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void BOARD_AdcPins(void);
+
 #if defined(__cplusplus)
 }
 #endif

@@ -14,6 +14,8 @@ mcu_data: ksdk2_0
 processor_version: 10.0.1
 pin_labels:
 - {pin_num: C8, pin_signal: ADC0_SE4b/CMP1_IN0/PTC2/SPI0_PCS2/UART1_CTS_b/FTM0_CH1/FB_AD12/I2S0_TX_FS/LPUART0_CTS_b, label: LED_BLUE, identifier: LED_BLUE;LED_BLUES}
+- {pin_num: G11, pin_signal: ADC0_SE8/ADC1_SE8/PTB0/LLWU_P5/I2C0_SCL/FTM1_CH0/FTM1_QD_PHA, label: ADC_FSR_R, identifier: ADC_FSR_R}
+- {pin_num: G10, pin_signal: ADC0_SE9/ADC1_SE9/PTB1/I2C0_SDA/FTM1_CH1/FTM1_QD_PHB, label: ADC_FSR_L, identifier: ADC_FSR_L}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -32,6 +34,7 @@ pin_labels:
 void BOARD_InitBootPins(void)
 {
     BOARD_InitPins();
+    BOARD_AdcPins();
 }
 
 /* clang-format off */
@@ -66,6 +69,36 @@ void BOARD_InitPins(void)
 
     /* PORTC2 (pin C8) is configured as PTC2 */
     PORT_SetPinMux(BOARD_INITPINS_LED_BLUE_PORT, BOARD_INITPINS_LED_BLUE_PIN, kPORT_MuxAsGpio);
+}
+
+/* clang-format off */
+/*
+ * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+BOARD_AdcPins:
+- options: {callFromInitBoot: 'true', coreID: core0, enableClock: 'true'}
+- pin_list:
+  - {pin_num: G11, peripheral: ADC0, signal: 'SE, 8', pin_signal: ADC0_SE8/ADC1_SE8/PTB0/LLWU_P5/I2C0_SCL/FTM1_CH0/FTM1_QD_PHA}
+  - {pin_num: G10, peripheral: ADC0, signal: 'SE, 9', pin_signal: ADC0_SE9/ADC1_SE9/PTB1/I2C0_SDA/FTM1_CH1/FTM1_QD_PHB}
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
+ */
+/* clang-format on */
+
+/* FUNCTION ************************************************************************************************************
+ *
+ * Function Name : BOARD_AdcPins
+ * Description   : Configures pin routing and optionally pin electrical features.
+ *
+ * END ****************************************************************************************************************/
+void BOARD_AdcPins(void)
+{
+    /* Port B Clock Gate Control: Clock enabled */
+    CLOCK_EnableClock(kCLOCK_PortB);
+
+    /* PORTB0 (pin G11) is configured as ADC0_SE8 */
+    PORT_SetPinMux(BOARD_ADCPINS_ADC_FSR_R_PORT, BOARD_ADCPINS_ADC_FSR_R_PIN, kPORT_PinDisabledOrAnalog);
+
+    /* PORTB1 (pin G10) is configured as ADC0_SE9 */
+    PORT_SetPinMux(BOARD_ADCPINS_ADC_FSR_L_PORT, BOARD_ADCPINS_ADC_FSR_L_PIN, kPORT_PinDisabledOrAnalog);
 }
 /***********************************************************************************************************************
  * EOF

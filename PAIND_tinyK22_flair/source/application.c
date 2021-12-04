@@ -8,8 +8,10 @@
 #include "application.h"
 #include "platform.h"
 #include <stdio.h>
+#include <stdint.h>
 #include "McuRTOS.h"
 #include "myTasks.h"
+#include "fsr_sensor.h"
 
 
 void APP_Run(void)
@@ -18,6 +20,8 @@ void APP_Run(void)
 	PL_Init();			// Initialize the platform
 
 	MyTasks_Init();		// creates task(s) and runs scheduler
+
+
 
 	// Start RTOS
 	vTaskStartScheduler();
