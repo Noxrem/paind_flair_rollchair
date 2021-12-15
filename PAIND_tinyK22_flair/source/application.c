@@ -19,7 +19,7 @@ void APP_Run(void)
 	printf("Welcome to FLAIR!\n");	// semihosting
 	PL_Init();			// Initialize the platform
 
-	MyTasks_Init();		// creates task(s) and runs scheduler
+	//MyTasks_Init();		// creates task(s) and runs scheduler
 
 
 
