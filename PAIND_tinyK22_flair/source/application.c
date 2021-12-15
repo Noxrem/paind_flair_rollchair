@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include "McuRTOS.h"
 #include "myTasks.h"
-#include "fsr_sensor.h"
+#include "Shell.h"
 
 
 void APP_Run(void)
@@ -21,7 +21,7 @@ void APP_Run(void)
 
 	//MyTasks_Init();		// creates task(s) and runs scheduler
 
-
+	SHELL_Init();	// Initialize the shell
 
 	// Start RTOS
 	vTaskStartScheduler();

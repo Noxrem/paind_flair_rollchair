@@ -13,7 +13,7 @@ mcu_data: ksdk2_0
 processor_version: 10.0.1
 functionalGroups:
 - name: BOARD_InitPeripherals
-  UUID: 37d25c67-6103-4a7d-8f98-8cad8be97c0d
+  UUID: 0606f9a0-684d-4480-a415-211e5306dce2
   called_from_default_init: true
   selectedCore: core0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/

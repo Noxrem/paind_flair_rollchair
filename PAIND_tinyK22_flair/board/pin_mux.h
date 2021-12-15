@@ -25,24 +25,11 @@ extern "C" {
  */
 void BOARD_InitBootPins(void);
 
-/*! @name PORTC2 (coord C8), LED_BLUE
-  @{ */
-
-/* Symbols to be used with GPIO driver */
-#define BOARD_INITPINS_LED_BLUE_GPIO GPIOC               /*!<@brief GPIO peripheral base pointer */
-#define BOARD_INITPINS_LED_BLUE_GPIO_PIN_MASK (1U << 2U) /*!<@brief GPIO pin mask */
-
-/* Symbols to be used with PORT driver */
-#define BOARD_INITPINS_LED_BLUE_PORT PORTC               /*!<@brief PORT peripheral base pointer */
-#define BOARD_INITPINS_LED_BLUE_PIN 2U                   /*!<@brief PORT pin number */
-#define BOARD_INITPINS_LED_BLUE_PIN_MASK (1U << 2U)      /*!<@brief PORT pin mask */
-                                                         /* @} */
-
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitPins(void);
+void BOARD_LPUartPins(void);
 
 /*! @name PORTB0 (coord G11), ADC_FSR_R
   @{ */
@@ -67,6 +54,25 @@ void BOARD_InitPins(void);
  *
  */
 void BOARD_AdcPins(void);
+
+/*! @name PORTC2 (coord C8), LED_BLUE
+  @{ */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_LED_BLUE_GPIO GPIOC               /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITPINS_LED_BLUE_GPIO_PIN_MASK (1U << 2U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITPINS_LED_BLUE_PORT PORTC               /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITPINS_LED_BLUE_PIN 2U                   /*!<@brief PORT pin number */
+#define BOARD_INITPINS_LED_BLUE_PIN_MASK (1U << 2U)      /*!<@brief PORT pin mask */
+                                                         /* @} */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void BOARD_InitPins(void);
 
 #if defined(__cplusplus)
 }

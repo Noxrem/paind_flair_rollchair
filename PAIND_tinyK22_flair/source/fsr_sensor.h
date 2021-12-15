@@ -8,7 +8,10 @@
 #ifndef FSR_SENSOR_H_
 #define FSR_SENSOR_H_
 #include <stdint.h>
+#include <stdbool.h>
+#include "McuShell.h"
 
+uint8_t FSR_Sensor_ParseCommand(const uint8_t *cmd, bool *handled, McuShell_ConstStdIOType *io);
 uint8_t FSR_Sensor_Right_Get_Value(uint16_t *val);
 uint8_t FSR_Sensor_Left_Get_Value(uint16_t *val);
 void FSR_Sensor_Init(void);

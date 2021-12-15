@@ -45,6 +45,7 @@ Instructions:
 #elif 1 /* example configuration for Kinetis K22 */
   #define McuLib_CONFIG_CPU_IS_KINETIS    (1)  /* NXP Kinetis family */
   #define McuLib_CONFIG_CORTEX_M          (4)  /*!< 0: Cortex-M0, 3: M3, 4: M4, 7: M7, 33: M33, -1 otherwise */
+  #define McuShellUart_CONFIG_UART 		  McuShellUart_CONFIG_UART_K22FN512_LPUART0	/* LPUART0 for K22 */
 #elif 0 /* example configuration for i.MX RT */
   #define McuLib_CONFIG_CPU_IS_IMXRT      (1)  /* i.MX RT family */
   #define McuLib_CONFIG_CORTEX_M          (7)  /*!< 0: Cortex-M0, 3: M3, 4: M4, 7: M7, 33: M33, -1 otherwise */
@@ -55,6 +56,9 @@ Instructions:
 /* #define configTOTAL_HEAP_SIZE                (24*1024) */
 /* #define configUSE_HEAP_SECTION_NAME          (1) */
 /* #define configHEAP_SECTION_NAME_STRING       ".bss.$SRAM_LOWER.FreeRTOS" */
+/* ------------------- Shell ---------------------------*/
+#define McuShell_CONFIG_PROJECT_NAME_STRING	"FLAIR Command Line Shell"
+#define McuShell_CONFIG_PROMPT_STRING		">>"
 /* ------------------- FatFS ---------------------------*/
 #define McuLib_CONFIG_USE_FAT_FS             (0)
 
