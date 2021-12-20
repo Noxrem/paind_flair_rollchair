@@ -14,13 +14,17 @@ def readFSRData():
         bytes = sp.readline()           # read bytes until line feed
         line = bytes.decode("ASCII")    # decode bytes as ascii string
 
-        try:
-            line = line.replace("\r\n", "")     # Remove the carriage return and line feed from the string
-            splitLineValues = line.split(" ")   # Extract the right and left values
-            fsrList = [int(splitLineValues[3]), int(splitLineValues[5])]     # Append one fsr right and left measurement to the list and convert it to an int
-        except:
-            print("Data could not be extracted.\n") 
-            #fsrList = [0, 0]           # Return empty values
+        if "right" in line:
+            try:
+                line = line[line.find("right"):]    # Remove chars before the word "right"
+                line = line.replace("\r\n", "")     # Remove the carriage return and line feed from the string
+                splitLineValues = line.split(" ")   # Extract the right and left values
+                fsrList = [int(splitLineValues[1]), int(splitLineValues[3])]     # Append one fsr right and left measurement to the list and convert it to an int
+            except Exception as e:
+                print("Data could not be extracted.\n") 
+                #fsrList = [0, 0]           # Return empty values
+        else:
+            continue
 
     return fsrList
 
@@ -47,12 +51,12 @@ def animate(i):
     global rightData
     global leftData
     fsrData = readFSRData()
-    if(fsrData):                  # If data was received
-        if(len(rightData) > 20):
-            del rightData[0]              # remove the first datapoint of the list
+    if(fsrData):                        # If data was received
+        if(len(rightData) > 20):        # limit the amount of data points shown
+            del rightData[0]            # remove the first datapoint of the list
             del leftData[0]
             
-        rightData.append(fsrData[0])     # Append received data to data about to be plotted
+        rightData.append(fsrData[0])    # Append received data to data about to be plotted
         leftData.append(fsrData[1])
 
     ax1.clear()
@@ -60,6 +64,8 @@ def animate(i):
     leftAxis, = ax1.plot(leftData, "g-")
     ax1.set_ylim(0, 4096)                   # set the view window to full scale (y axis)
     ax1.set_title("FSR Sensor Live Data")
+    ax1.set_ylabel("ADC value")
+    ax1.set_xlabel("samples")
     ax1.legend([rightAxis, leftAxis], ["FSR Right", "FSR Left"])
 
 ani = animation.FuncAnimation(fig, animate, interval=100)
