@@ -113,7 +113,7 @@ static void fsrSensorTask(void *pv)
 	uint16_t valueRight;
 	uint16_t valueLeft;
 
-	uint8_t buf[42]; 	// buffer needs to hold max. : fsr sensor right: 65555 left: 65555\r\n\0
+	uint8_t buf[35]; 	// buffer needs to hold max. : fsr right 65555 left 65555\r\n\0
 	while(1)
 	{
 		FSR_Sensor_Right_Get_Value(&valueRight);
@@ -121,9 +121,9 @@ static void fsrSensorTask(void *pv)
 		/* send continuous fsr sensor values to the UART shell if enabled */
 		if(sendFSRValuesOverUart)
 		{
-			McuUtility_strcpy(buf, sizeof(buf), (const unsigned char*)"fsr sensor right: ");
+			McuUtility_strcpy(buf, sizeof(buf), (const unsigned char*)"fsr right ");
 			McuUtility_strcatNum16u(buf, sizeof(buf), valueRight);
-			McuUtility_strcat(buf, sizeof(buf), (const unsigned char*)" left: ");
+			McuUtility_strcat(buf, sizeof(buf), (const unsigned char*)" left ");
 			McuUtility_strcatNum16u(buf, sizeof(buf), valueLeft);
 			McuUtility_strcat(buf, sizeof(buf), (unsigned char*)"\r\n");
 			McuShell_SendStr(buf, McuShell_GetStdio()->stdOut);		// send sensor values to stdOut

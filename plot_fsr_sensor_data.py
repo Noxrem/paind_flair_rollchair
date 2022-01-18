@@ -15,14 +15,12 @@ def readFSRData():
         line = bytes.decode("ASCII")    # decode bytes as ascii string
 
         if "right" in line:
+            line = line.replace("\r\n", "")     # Remove the carriage return and line feed from the string
+            splitLineValues = line.split(" ")   # Extract the right and left values
             try:
-                line = line[line.find("right"):]    # Remove chars before the word "right"
-                line = line.replace("\r\n", "")     # Remove the carriage return and line feed from the string
-                splitLineValues = line.split(" ")   # Extract the right and left values
-                fsrList = [int(splitLineValues[1]), int(splitLineValues[3])]     # Append one fsr right and left measurement to the list and convert it to an int
+                fsrList = [int(splitLineValues[2]), int(splitLineValues[4])]     # Append one fsr right and left measurement to the list and convert it to an int
             except Exception as e:
-                print("Data could not be extracted.\n") 
-                #fsrList = [0, 0]           # Return empty values
+                print("Data could not be extracted.")
         else:
             continue
 
