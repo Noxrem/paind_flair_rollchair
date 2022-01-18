@@ -3,10 +3,31 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.widgets import Button
 import numpy as np
+import keyboard
 
 sp = serial.Serial(port = "COM14", baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
 sp.flush()
+# Variables
+funcEnabled = False;
 
+# Take the list [right, left] values of the fsr sensor and execute a key event
+def fsrDataToKeyEvent(fsrData):
+    thresh1 = 200
+    thresh2 = 500           # Threshold 2
+    thresh3 = 2000
+    
+    rightFsr = fsrData[0]
+    leftFsr = fsrData[1]
+    if(thresh1 < rightFsr and leftFsr < thresh1):
+        keyboard.send("right")
+    elif(rightFsr < thresh1 and thresh1 < leftFsr):
+        keyboard.send("left")
+    elif(thresh2 < rightFsr < thresh3 and thresh2 < leftFsr < thresh3):
+        keyboard.send("down")
+    elif(rightFsr > thresh3 and leftFsr > thresh3):
+        keyboard.send("up")
+    
+# Read fsr data from serial port
 def readFSRData():
     fsrList = None
     sp.write(b'fsr value on\r\n')
@@ -27,16 +48,32 @@ def readFSRData():
     return fsrList
 
 # Pause the animation
-def animationPause(i):
+def animationPause():
     global ani
     sp.write(b'fsr value off\r\n')      # disable the sending of data from the fsr over uart
     ani.pause()
 
 # Resume the animation
-def animationResume(i):
+def animationResume():
     global ani
     sp.write(b'fsr value on\r\n')       # enable the sending of data from the fsr over uart
     ani.resume()
+
+# Toggle the global bool variable, change Function button color and pause animation
+def toggleFuncEnabled(event):
+    global funcEnabled
+    global btnFunc
+    if funcEnabled:
+        funcEnabled = False
+        btnFunc.color = "red"
+        #animationResume()      # Resume the plot animation
+    else:
+         funcEnabled = True
+         btnFunc.color = "green"
+         #animationPause()        # Pause the plot animation
+    btnFunc.hovercolor = btnFunc.color
+    btnFunc.ax.figure.canvas.draw()
+    
 
 fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)
@@ -49,6 +86,8 @@ def animate(i):
     global rightData
     global leftData
     fsrData = readFSRData()
+    if funcEnabled:
+        fsrDataToKeyEvent(fsrData)
     if(fsrData):                        # If data was received
         if(len(rightData) > 20):        # limit the amount of data points shown
             del rightData[0]            # remove the first datapoint of the list
@@ -70,10 +109,13 @@ ani = animation.FuncAnimation(fig, animate, interval=100)
 
 ax_pause = plt.axes([0.01, 0.01, 0.08, 0.05])   # Button xpos, ypos, width, height
 ax_play = plt.axes([0.1, 0.01, 0.08, 0.05])
+ax_func = plt.axes([0.19, 0.01, 0.1, 0.05])
 btnPause = Button(ax_pause, "Pause")
 btnPlay = Button(ax_play, "Play")
+btnFunc = Button(ax_func, "Function", color="red")
 btnPause.on_clicked(animationPause)
 btnPlay.on_clicked(animationResume)
+btnFunc.on_clicked(toggleFuncEnabled)
 
 plt.show()
 
