@@ -5,8 +5,18 @@ from matplotlib.widgets import Button
 import numpy as np
 import keyboard
 
-sp = serial.Serial(port = "COM14", baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+inputNotOk = True
+
+while(inputNotOk):
+    try:
+        comPort = input("Enter the COM port:")
+        sp = serial.Serial(port = comPort, baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+    except:
+        print("Could not connect to COM port. Try again...\n")
+    else:
+        inputNotOk = False
 sp.flush()
+
 # Variables
 funcEnabled = False;
 

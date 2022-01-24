@@ -129,7 +129,7 @@ static void fsrSensorTask(void *pv)
 			McuShell_SendStr(buf, McuShell_GetStdio()->stdOut);		// send sensor values to stdOut
 		}
 		//printf("FSR Sensor Right: %4u Left: %4u\r\n", valueRight, valueLeft);	// format the values that they are preceded with blanks
-		vTaskDelay(pdMS_TO_TICKS(10));		// wait for 500 ms
+		v		;		// wait for 500 ms
 	}
 }
 
