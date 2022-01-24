@@ -5,20 +5,14 @@ from matplotlib.widgets import Button
 import numpy as np
 import keyboard
 
-inputNotOk = True
-
-while(inputNotOk):
-    try:
-        comPort = input("Enter the COM port:")
-        sp = serial.Serial(port = comPort, baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
-    except:
-        print("Could not connect to COM port. Try again...\n")
-    else:
-        inputNotOk = False
-sp.flush()
-
 # Variables
-funcEnabled = False;
+funcEnabled = False;        # If keyboard output (arrow keys) are enabled
+inputNotOk = True           # If COM port input was not valid
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
+
+rightData = []
+leftData = []
 
 # Take the list [right, left] values of the fsr sensor and execute a key event
 def fsrDataToKeyEvent(fsrData):
@@ -84,38 +78,42 @@ def toggleFuncEnabled(event):
     btnFunc.hovercolor = btnFunc.color
     btnFunc.ax.figure.canvas.draw()
     
-
-fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
-
-
-rightData = []
-leftData = []
-
 def animate(i):
     global rightData
     global leftData
     fsrData = readFSRData()
-    if funcEnabled:
+    if funcEnabled:                 # Either control keyboard or plot data
         fsrDataToKeyEvent(fsrData)
-    if(fsrData):                        # If data was received
-        if(len(rightData) > 20):        # limit the amount of data points shown
-            del rightData[0]            # remove the first datapoint of the list
-            del leftData[0]
-            
-        rightData.append(fsrData[0])    # Append received data to data about to be plotted
-        leftData.append(fsrData[1])
+    else:
+        if(fsrData):                        # If data was received
+            if(len(rightData) > 20):        # limit the amount of data points shown
+                del rightData[0]            # remove the first datapoint of the list
+                del leftData[0]
+                
+            rightData.append(fsrData[0])    # Append received data to data about to be plotted
+            leftData.append(fsrData[1])
 
-    ax1.clear()
-    rightAxis, = ax1.plot(rightData, "r-")  # get the list of lines representing the plotted data
-    leftAxis, = ax1.plot(leftData, "g-")
-    ax1.set_ylim(0, 4096)                   # set the view window to full scale (y axis)
-    ax1.set_title("FSR Sensor Live Data")
-    ax1.set_ylabel("ADC value")
-    ax1.set_xlabel("samples")
-    ax1.legend([rightAxis, leftAxis], ["FSR Right", "FSR Left"])
+        ax1.clear()
+        rightAxis, = ax1.plot(rightData, "r-")  # get the list of lines representing the plotted data
+        leftAxis, = ax1.plot(leftData, "g-")
+        ax1.set_ylim(0, 4096)                   # set the view window to full scale (y axis)
+        ax1.set_title("FSR Sensor Live Data")
+        ax1.set_ylabel("ADC value")
+        ax1.set_xlabel("samples")
+        ax1.legend([rightAxis, leftAxis], ["FSR Right", "FSR Left"])
 
-ani = animation.FuncAnimation(fig, animate, interval=100)
+# Take input in console
+while(inputNotOk):  # Iterate until valid COM port is entered
+    try:
+        comPort = input("Enter the COM port:")
+        sp = serial.Serial(port = comPort, baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+    except:
+        print("Could not connect to COM port. Try again...\n")
+    else:
+        inputNotOk = False
+sp.flush()          # Flush COM port
+
+ani = animation.FuncAnimation(fig, animate, interval=100)   # Start animation
 
 ax_pause = plt.axes([0.01, 0.01, 0.08, 0.05])   # Button xpos, ypos, width, height
 ax_play = plt.axes([0.1, 0.01, 0.08, 0.05])
